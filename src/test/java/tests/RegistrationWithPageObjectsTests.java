@@ -17,6 +17,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     TestDataWithFaker testData = new TestDataWithFaker();
 
     @Test
+    @Tag("regress")
     @DisplayName("Successful registration with all fields filled")
     void successfulAllFieldsRegistrationTest() {
         step("Open registration form", () -> {
@@ -56,6 +57,8 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     }
 
     @Test
+    @Tag("regress")
+    @Tag("smoke")
     @DisplayName("Successful registration with required fields filled")
     void successfulRequiredFieldsRegistrationTest() {
         step("Open registration form", () -> {
@@ -83,6 +86,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     }
 
     @Test
+    @Tag("regress")
     @DisplayName("Unsuccessful registration with incorrect email address")
     void incorrectEmailRegistrationTest() {
         step("Open registration form", () -> {

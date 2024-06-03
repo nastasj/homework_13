@@ -7,6 +7,14 @@ repositories {
     mavenCentral()
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 def allureVersion = "2.27.0",
     selenideVersion = "7.2.3"
 
@@ -49,5 +57,17 @@ tasks.withType(Test) {
 task demoqa_test(type: Test) {
     useJUnitPlatform {
         includeTags("demoqa")
+    }
+}
+
+task smoke_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+}
+
+task regress_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("regress")
     }
 }
