@@ -23,9 +23,6 @@ public class RegistrationWithPageObjectsTests extends TestBase {
         step("Open registration form", () -> {
                     registrationPage.openPage();
                 });
-        step("Close advertising banners", () -> {
-                    basePage.removeBanner();
-                });
         step("Fill out all form fields and submit the form", () -> {
                     registrationPage.setFirstName(testData.firstName)
                             .setLastName(testData.lastName)
@@ -38,8 +35,9 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                             .uploadPicture(testData.picture)
                             .setUserAddress(testData.userAddress)
                             .setUserState(testData.userState)
-                            .setUserCity(testData.userCity)
-                            .submitForm();
+                            .setUserCity(testData.userCity);
+                    basePage.removeBanner();
+                    registrationPage.submitForm();
                 });
         step("Check result data is correct", () -> {
             registrationPage.checkResult("Student Name", testData.firstName + " " + testData.lastName)
@@ -64,16 +62,14 @@ public class RegistrationWithPageObjectsTests extends TestBase {
         step("Open registration form", () -> {
                     registrationPage.openPage();
                 });
-        step("Close advertising banners", () -> {
-                    basePage.removeBanner();
-                });
         step("Fill out required form fields and submit the form", () -> {
             registrationPage.setFirstName(testData.firstName)
                     .setLastName(testData.lastName)
                     .setGender(testData.gender)
                     .setUserNumber(testData.userNumber)
-                    .setDateOfBirth(testData.dayOfBirth, testData.monthOfBirth, testData.yearOfBirth)
-                    .submitForm();
+                    .setDateOfBirth(testData.dayOfBirth, testData.monthOfBirth, testData.yearOfBirth);
+            basePage.removeBanner();
+            registrationPage.submitForm();
                 });
         step("Check result data is correct", () -> {
             registrationPage.checkResultFormVisible()
@@ -92,17 +88,15 @@ public class RegistrationWithPageObjectsTests extends TestBase {
         step("Open registration form", () -> {
                     registrationPage.openPage();
                 });
-        step("Close advertising banners", () -> {
-                    basePage.removeBanner();
-                });
         step("Fill out form fields with incorrect email address and submit the form", () -> {
             registrationPage.setFirstName(testData.firstName)
                     .setLastName(testData.lastName)
                     .setEmail(testData.incorrectUserEmail)
                     .setGender(testData.gender)
                     .setUserNumber(testData.userNumber)
-                    .setDateOfBirth(testData.dayOfBirth, testData.monthOfBirth, testData.yearOfBirth)
-                    .submitForm();
+                    .setDateOfBirth(testData.dayOfBirth, testData.monthOfBirth, testData.yearOfBirth);
+            basePage.removeBanner();
+            registrationPage.submitForm();
         });
         step("Check result form is invisible", () -> {
             registrationPage.checkResultFormInvisible();
